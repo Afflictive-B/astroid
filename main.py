@@ -1,3 +1,4 @@
+import sys
 import pygame
 from constants import * 
 from player import Player
@@ -23,7 +24,7 @@ def main():
     
 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-    
+
     dt = 0
 
     while True:
@@ -42,6 +43,11 @@ def main():
         pygame.display.flip()
 
         dt = clock.tick(60) / 1000
+
+        for obj in asteroids:
+            if obj.collision(player):
+                print("Game over!")
+                sys.exit()
 
 
 
